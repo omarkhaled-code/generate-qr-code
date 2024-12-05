@@ -1,0 +1,120 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-color: #eee;
+  .box {
+    width: min(400px, 90%);
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: 1px 0px 15px rgba(0, 0, 0, 0.12);
+    input {
+      padding: 8px 12px;
+      border-radius: 6px;
+      background-color: #eee;
+      border: none;
+      outline: none;
+    }
+    input.error {
+      animation: shake 0.1s linear infinite;
+    }
+    #qr-card {
+      display: none;
+      transition: 0.3s;
+      margin: 10px auto;
+      text-align: center;
+      img {
+        width: 110px;
+        height: 110px;
+        box-shadow: 1px 0px 15px rgb(23, 91, 240, 0.25);
+      }
+    }
+    button {
+      color: white;
+      background-color: rgb(23, 91, 240);
+      border: 1px solid transparent;
+      padding: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    button:hover {
+      background-color: transparent;
+      border-color: rgb(23, 91, 240);
+      color: rgb(23, 91, 240);
+    }
+    button:active {
+      background-color: rgb(11, 55, 148);
+    }
+  }
+  .box.active {
+    #qr-card {
+      img {
+        animation: showQRCard 0.3s linear;
+        border-radius: 6px;
+      }
+      display: flex;
+    }
+  }
+}
+
+#download {
+  display: none;
+  color: white;
+  background-color: #e91e63;
+  border: 1px solid transparent;
+  padding: 10px 25px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+  text-decoration: none;
+}
+#download.active {
+  display: block;
+}
+
+@keyframes showQRCard {
+  0% {
+    opacity: 0;
+    height: 0;
+  }
+  50% {
+    opacity: 0.5;
+    height: 55px;
+  }
+  100% {
+    opacity: 1;
+    height: 110;
+  }
+}
+
+@keyframes shake {
+  25% {
+    transform: translateX(-4px);
+  }
+  50% {
+    transform: translateX(0);
+  }
+  75% {
+    transform: translateX(4px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
